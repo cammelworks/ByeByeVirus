@@ -6,9 +6,9 @@
   <title>ByeByeVirus</title>
 </head>
 <body>
-  <div id="start">
+  <div id="start" v-if="seen">
     <p id="titleText">ByeByeVirus</p>
-    <a href="#" class="flatButton" id="startButton">スタート</a>
+    <a href="#" class="flatButton" id="startButton" v-on:click="toggleTitle">スタート</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
