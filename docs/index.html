@@ -15,7 +15,7 @@
   <!-- ゲーム画面 -->
   <div id="game" v-if="seen">
     <div v-for="n in 100">
-      <virus-image v-bind:src="image" v-bind:id=n></virus-image>
+      <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
     </div>
   </div>
 

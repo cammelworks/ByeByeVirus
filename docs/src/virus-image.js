@@ -10,11 +10,12 @@ Vue.component('virus-image', {
   },
   template: `
     <div v-bind:id="id" v-random-pos>
-      <img class="img-virus" v-bind:src='src' v-on:mouseover="deleteSelf"></img>
+      <img class="img-virus" v-bind:src='src' v-on:mouseover="hovered"></img>
     </div>
   `,
   methods:{
-    deleteSelf: function(){
+    hovered: function(){
+      this.$emit('hoverd');
       this.$el.parentNode.removeChild(this.$el);
     }
   }
