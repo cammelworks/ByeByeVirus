@@ -14,7 +14,7 @@
 
   <!-- ゲーム画面 -->
   <div id="game" v-if="seen">
-    <div v-for="n in 5">
+    <div v-for="n in 100">
       <virus-image v-bind:src="image" v-bind:id=n></virus-image>
     </div>
   </div>
@@ -22,5 +22,6 @@
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="src/main.js"></script>
   <script src="src/virus-image.js"></script>
+  <script src="src/ramdom-pos.js"></script>
 </body>
 </html>
