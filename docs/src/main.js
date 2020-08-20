@@ -4,9 +4,9 @@ var title = new Vue({
     seen: true
   },
   methods:{
-    toggleTitle: function(){
-      this.seen = !this.seen
-      game.seen = !game.seen
+    start: function(){
+      this.seen = false;
+      game.show();
     }
   }
 })
@@ -16,5 +16,10 @@ var game = new Vue({
   data: {
     seen: false,
     image: "../figs/virus_corona.png"
+  },
+  methods:{
+    show: function(){
+      this.seen = true;
+    }
   }
 })

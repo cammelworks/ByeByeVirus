@@ -6,13 +6,17 @@
   <title>ByeByeVirus</title>
 </head>
 <body>
+  <!-- タイトル画面 -->
   <div id="title" v-if="seen">
     <p id="titleText">ByeByeVirus</p>
-    <a href="#" class="flatButton" id="startButton" v-on:click="toggleTitle">スタート</a>
+    <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
   </div>
 
+  <!-- ゲーム画面 -->
   <div id="game" v-if="seen">
-    <virus-image v-bind:src="image"></virus-image>
+    <div v-for="n in 5">
+      <virus-image v-bind:src="image" v-bind:id=n></virus-image>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
