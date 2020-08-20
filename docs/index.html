@@ -6,9 +6,13 @@
   <title>ByeByeVirus</title>
 </head>
 <body>
-  <div id="start" v-if="seen">
+  <div id="title" v-if="seen">
     <p id="titleText">ByeByeVirus</p>
     <a href="#" class="flatButton" id="startButton" v-on:click="toggleTitle">スタート</a>
+  </div>
+
+  <div id="game" v-if="seen">
+    <image v-bind:src="image"></image>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
