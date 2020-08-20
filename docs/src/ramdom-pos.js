@@ -9,9 +9,9 @@ Vue.directive('random-pos', {
 
 //高さをランダムで指定する
 function randomTop(){
-    return Math.floor(Math.random() * Math.floor(window.innerHeight - 55));
+    return Math.floor(Math.random() * Math.floor(window.innerHeight - 105));
 }
 //横の位置をランダムで指定する
 function randomLeft(){
-    return Math.floor(Math.random() * Math.floor(window.innerWidth - 55));
+    return Math.floor(Math.random() * Math.floor(window.innerWidth - 105));
 }
