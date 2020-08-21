@@ -15,8 +15,7 @@
   <!-- ゲーム画面 -->
   <div id="game" v-if="seen">
     <div id="time">
-      <p>Elapsed Time:
-        {{ hours }} :
+      <p class="game-time">
         {{ minutes | zeroPad }} :
         {{ seconds | zeroPad }} :
         {{ milliSeconds | zeroPad(3) }}</p>

@@ -38,3 +38,9 @@
   width: 100px;
   height: 100px;
 }
+
+.game-time{
+  text-align: center;
+  font-size: 50px;
+  margin-top: 30px;
+}

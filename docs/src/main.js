@@ -113,5 +113,5 @@ function gameStart(){
 function showTitle(){
   title.seen = true;
   game.stopTimer();
-  // game.seen = false;
+  game.seen = false;
 }
