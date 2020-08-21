@@ -8,7 +8,10 @@
 <body>
   <!-- タイトル画面 -->
   <div id="title" v-if="seen">
-    <p id="titleText">ByeByeVirus</p>
+    <div id="titleText">
+      <span class="box">ByeByeVirus</span>
+      <img class="box" id="titleImg" src="../figs/virus_corona.png">
+    </div>
     <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
   </div>
 
