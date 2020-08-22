@@ -37,6 +37,11 @@ var game = new Vue({
     toTitle: function(){
       showTitle();
     },
+    //リスタート
+    restart: function(){
+      game.seen = false;
+      sleep(1, gameStart);
+    },
     // 現在時刻から引数に渡した数値を startTime に代入
     setSubtractStartTime: function (time) {
       var time = typeof time !== 'undefined' ? time : 0;
@@ -109,6 +114,7 @@ var game = new Vue({
 
 function gameStart(){
   title.seen = false;
+  game.isResult = false;
   game.remaining = 100;
   game.seen = true;
   game.clearAll();
@@ -123,4 +129,27 @@ function showTitle(){
 function showResult(){
   game.stopTimer();
   game.isResult = true;
+}
+
+function sleep(waitSec, callbackFunc) {
+ 
+  // 経過時間（秒）
+  var spanedSec = 0;
+
+  // 1秒間隔で無名関数を実行
+  var id = setInterval(function () {
+
+      spanedSec++;
+
+      // 経過時間 >= 待機時間の場合、待機終了。
+      if (spanedSec >= waitSec) {
+
+          // タイマー停止
+          clearInterval(id);
+
+          // 完了時、コールバック関数を実行
+          if (callbackFunc) callbackFunc();
+      }
+  }, 100);
+
 }
