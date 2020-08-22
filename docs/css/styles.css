@@ -29,19 +29,44 @@ body{
   font-size: 50px;
 }
 
+#resultText{
+  position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  font-size: 100px;
+  color: #73d2de;
+}
+
+#resultButtons{
+  position: absolute;
+	top: 70%;
+	left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#titleButton, #restartButton{
+  text-align: center;
+  width: 200px;
+  height: 70px;
+  font-size: 30px;
+}
+
 .flatButton {
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #73d2de;
+  color: white;
+  background-color: #73d2de;
   border: solid 2px #73d2de;
   border-radius: 3px;
   transition: .4s;
 }
 
 .flatButton:hover {
-  background: #73d2de;
-  color: white;
+  background: #c9ada1;
+  color: #73d2de;
+  border: solid 2px #73d2de;
 }
 
 .img-virus {

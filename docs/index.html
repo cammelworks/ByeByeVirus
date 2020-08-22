@@ -27,8 +27,11 @@
       <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
     </div>
     <div id="result" v-if="isResult">
-      <a href="#" class="flatButton" id="titleButton" v-on:click="toTitle">ホーム画面へ</a>
-      <a href="#" class="flatButton" id="restartButton" v-on:click="restart">リスタート</a>
+      <p id="resultText">CLEAR!!</p>
+      <div id="resultButtons">
+        <a href="#" class="flatButton" id="titleButton" v-on:click="toTitle">ホーム画面へ</a>
+        <a href="#" class="flatButton" id="restartButton" v-on:click="restart">リスタート</a>
+      </div>
     </div>
   </div>
 
