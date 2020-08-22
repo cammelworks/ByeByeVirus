@@ -10,7 +10,7 @@
   <div id="title" v-if="seen">
     <div id="titleText">
       <span class="box">ByeByeVirus</span>
-      <img class="box" id="titleImg" src="../figs/virus_corona.png">
+      <img class="box" id="titleImg" src="figs/virus_corona.png">
     </div>
     <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
   </div>
@@ -36,6 +36,15 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/7.19.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="/__/firebase/7.19.0/firebase-analytics.js"></script>
+
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
   <script src="src/main.js"></script>
   <script src="src/virus-image.js"></script>
   <script src="src/ramdom-pos.js"></script>

@@ -1,2 +1,7 @@
-figs/
-sounds/
+docs/figs/
+docs/sounds/
+.firebase/
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
