@@ -29,7 +29,7 @@ var game = new Vue({
       this.remaining--;
       console.log(this.remaining);
       if (this.remaining <= 0) {
-        showTitle();
+        showResult();
       }
     },
     // 現在時刻から引数に渡した数値を startTime に代入
@@ -112,6 +112,9 @@ function gameStart(){
 
 function showTitle(){
   title.seen = true;
-  game.stopTimer();
   game.seen = false;
+}
+
+function showResult(){
+  game.stopTimer();
 }

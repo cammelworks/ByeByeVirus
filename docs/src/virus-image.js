@@ -1,9 +1,4 @@
 Vue.component('virus-image', {
-  data:{
-    styleObject: {
-      backgroundColor: 'red',
-    }
-  },
   props: {
     src: String,
     id: Number,
