@@ -26,6 +26,9 @@
     <div v-for="n in 100">
       <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
     </div>
+    <div id="result" v-if="isResult">
+      <a href="#" class="flatButton" id="titleButton" v-on:click="toTitle">ホーム画面へ</a>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>

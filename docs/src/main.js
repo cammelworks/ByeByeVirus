@@ -22,6 +22,7 @@ var game = new Vue({
     diffTime: 0,
     startTime: 0,
     isRunning: false,
+    isResult: false,
   },
   methods:{
     // ウイルスの残り数を更新する
@@ -31,6 +32,10 @@ var game = new Vue({
       if (this.remaining <= 0) {
         showResult();
       }
+    },
+    //titleに戻る
+    toTitle: function(){
+      showTitle();
     },
     // 現在時刻から引数に渡した数値を startTime に代入
     setSubtractStartTime: function (time) {
@@ -117,4 +122,5 @@ function showTitle(){
 
 function showResult(){
   game.stopTimer();
+  game.isResult = true;
 }
