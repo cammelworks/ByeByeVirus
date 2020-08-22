@@ -16,9 +16,6 @@ var game = new Vue({
     seen: false,
     remaining: 100,
     image: "../figs/virus_corona.png",
-    sounds: {
-      clearSE: new Audio("../sounds/clearSE.mp3"),
-    },
     times: [],
     animateFrame: 0,
     nowTime: 0,
@@ -35,6 +32,8 @@ var game = new Vue({
       this.remaining--;
       console.log(this.remaining);
       if (this.remaining <= 0) {
+        var sound = new Audio("../sounds/clearSE.mp3");
+        sound.play();
         showResult();
       }
     },
