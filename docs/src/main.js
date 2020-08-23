@@ -16,6 +16,7 @@ var game = new Vue({
     seen: false,
     remaining: 100,
     image: "figs/virus_corona.png",
+    bgm: new Audio("sounds/BGM.mp3"),
     times: [],
     animateFrame: 0,
     nowTime: 0,
@@ -29,11 +30,12 @@ var game = new Vue({
     // ウイルスの残り数を更新する
     decrementTotalCount: function(){
       var sound = new Audio("sounds/deleteVirusSE.mp3");
+      sound.volume = 0.5;
       sound.play();
       this.remaining--;
       console.log(this.remaining);
       if (this.remaining <= 0) {
-        var sound = new Audio("sounds/clearSE.mp3");
+        sound = new Audio("sounds/clearSE.mp3");
         sound.play();
         showResult();
       }
@@ -135,6 +137,9 @@ var game = new Vue({
 })
 
 function gameStart(){
+  game.bgm.loop = true;
+  game.bgm.volume = 0.5;
+  game.bgm.play();
   title.seen = false;
   game.isResult = false;
   game.remaining = 100;
@@ -150,6 +155,8 @@ function showTitle(){
 }
 
 function showResult(){
+  game.bgm.pause();
+  game.bgm.currentTime = 0;
   game.stopTimer();
   game.isResult = true;
 }
