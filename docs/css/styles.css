@@ -80,3 +80,7 @@ body{
   margin-top: 30px;
   color: #3b1f2b;
 }
+
+.random{
+  transition: .1s;
+}

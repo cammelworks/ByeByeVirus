@@ -4,7 +4,7 @@ Vue.component('virus-image', {
     id: Number,
   },
   template: `
-    <div v-bind:id="id" v-random-pos>
+    <div v-bind:id="id" class="ramdom" v-random-pos>
       <img class="img-virus" v-bind:src='src' v-on:mouseover="hovered"></img>
     </div>
   `,
