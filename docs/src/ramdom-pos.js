@@ -2,7 +2,11 @@ Vue.directive('random-pos', {
     bind(el){
         el.style.position = "absolute";
         var top = randomTop();
-        var left = randomLeft()
+        var left = randomLeft();
+        while(top < 100 && left > window.innerWidth - 500){
+          top = randomTop();
+          left = randomLeft();
+        }
         el.style.top = top + "px";
         el.style.left = left + "px";
         randomMove(el, top, left);

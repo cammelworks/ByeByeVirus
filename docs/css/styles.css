@@ -31,7 +31,7 @@ body{
 
 #resultText{
   position: absolute;
-	top: 30%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
   font-size: 150px;
@@ -40,7 +40,7 @@ body{
 
 #resultButtons{
   position: absolute;
-	top: 70%;
+	top: 80%;
 	left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -74,10 +74,14 @@ body{
   height: 100px;
 }
 
-.game-time{
-  text-align: center;
-  font-size: 50px;
+#time{
   margin-top: 30px;
+  margin-right: 30px;
+  text-align: right;
+}
+
+.game-time{
+  font-size: 30px;
   color: #3b1f2b;
 }
 

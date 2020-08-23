@@ -19,14 +19,17 @@
   <div id="game" v-if="seen">
     <div id="time">
       <p class="game-time">
-        {{ storageMinutes | zeroPad }} :
-        {{ storageSeconds | zeroPad }} :
+        ハイスコア 
+        {{ storageMinutes | zeroPad }}:
+        {{ storageSeconds | zeroPad }}:
         {{ storageMilliSeconds | zeroPad(3) }}
       </p>
       <p class="game-time">
-        {{ minutes | zeroPad }} :
-        {{ seconds | zeroPad }} :
-        {{ milliSeconds | zeroPad(3) }}</p>
+        経過時間
+        {{ minutes | zeroPad }}:
+        {{ seconds | zeroPad }}:
+        {{ milliSeconds | zeroPad(3) }}
+      </p>
     </div>
     <div v-for="n in 100">
       <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
