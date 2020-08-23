@@ -104,14 +104,23 @@ var game = new Vue({
     },
     // 分数を計算 (60分になったら0分に戻る)
     storageMinutes: function () {
+      if(!this.highScore){
+        return "99";
+      }
       return Math.floor(this.highScore / 1000 / 60) % 60;
     },
     // 秒数を計算 (60秒になったら0秒に戻る)
     storageSeconds: function () {
+      if(!this.highScore){
+        return "99";
+      }
       return Math.floor(this.highScore / 1000) % 60;
     },
     // ミリ数を計算 (1000ミリ秒になったら0ミリ秒に戻る)
     storageMilliSeconds: function () {
+      if(!this.highScore){
+        return "999";
+      }
       return Math.floor(this.highScore % 1000);
     },
   },
