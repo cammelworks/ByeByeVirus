@@ -36,6 +36,7 @@ var game = new Vue({
       console.log(this.remaining);
       if (this.remaining <= 0) {
         sound = new Audio("sounds/clearSE.mp3");
+        sound.volume = 0.3;
         sound.play();
         showResult();
       }
@@ -138,7 +139,7 @@ var game = new Vue({
 
 function gameStart(){
   game.bgm.loop = true;
-  game.bgm.volume = 0.5;
+  game.bgm.volume = 0.3;
   game.bgm.play();
   title.seen = false;
   game.isResult = false;
