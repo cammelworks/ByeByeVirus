@@ -19,6 +19,11 @@
   <div id="game" v-if="seen">
     <div id="time">
       <p class="game-time">
+        {{ storageMinutes | zeroPad }} :
+        {{ storageSeconds | zeroPad }} :
+        {{ storageMilliSeconds | zeroPad(3) }}
+      </p>
+      <p class="game-time">
         {{ minutes | zeroPad }} :
         {{ seconds | zeroPad }} :
         {{ milliSeconds | zeroPad(3) }}</p>

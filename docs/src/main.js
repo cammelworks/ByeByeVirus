@@ -20,6 +20,7 @@ var game = new Vue({
     animateFrame: 0,
     nowTime: 0,
     diffTime: 0,
+    highScore: localStorage.diffTime,
     startTime: 0,
     isRunning: false,
     isResult: false,
@@ -89,10 +90,6 @@ var game = new Vue({
     }
   },
   computed: {
-    // 時間を計算
-    hours: function () {
-      return Math.floor(this.diffTime / 1000 / 60 / 60);
-    },
     // 分数を計算 (60分になったら0分に戻る)
     minutes: function () {
       return Math.floor(this.diffTime / 1000 / 60) % 60;
@@ -104,7 +101,19 @@ var game = new Vue({
     // ミリ数を計算 (1000ミリ秒になったら0ミリ秒に戻る)
     milliSeconds: function () {
       return Math.floor(this.diffTime % 1000);
-    }
+    },
+    // 分数を計算 (60分になったら0分に戻る)
+    storageMinutes: function () {
+      return Math.floor(this.highScore / 1000 / 60) % 60;
+    },
+    // 秒数を計算 (60秒になったら0秒に戻る)
+    storageSeconds: function () {
+      return Math.floor(this.highScore / 1000) % 60;
+    },
+    // ミリ数を計算 (1000ミリ秒になったら0ミリ秒に戻る)
+    storageMilliSeconds: function () {
+      return Math.floor(this.highScore % 1000);
+    },
   },
   filters: {
     // ゼロ埋めフィルタ 引数に桁数を入力する
@@ -121,6 +130,7 @@ function gameStart(){
   game.isResult = false;
   game.remaining = 100;
   game.seen = true;
+  saveData();
   game.clearAll();
   game.startTimer();
 }
@@ -136,24 +146,27 @@ function showResult(){
 }
 
 function sleep(waitSec, callbackFunc) {
- 
   // 経過時間（秒）
   var spanedSec = 0;
-
   // 1秒間隔で無名関数を実行
   var id = setInterval(function () {
-
       spanedSec++;
-
       // 経過時間 >= 待機時間の場合、待機終了。
       if (spanedSec >= waitSec) {
-
           // タイマー停止
           clearInterval(id);
-
           // 完了時、コールバック関数を実行
           if (callbackFunc) callbackFunc();
       }
   }, 100);
+}
 
+function saveData(){
+  if(game.diffTime == 0){
+    return
+  }
+  if (localStorage.diffTime > game.diffTime || !localStorage.diffTime){
+    localStorage.diffTime = game.diffTime;
+    game.highScore = game.diffTime;
+  }
 }
