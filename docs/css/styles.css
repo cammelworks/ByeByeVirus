@@ -34,8 +34,8 @@ body{
 	top: 30%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-  font-size: 100px;
-  color: #73d2de;
+  font-size: 150px;
+  color: #3b1f2b;
 }
 
 #resultButtons{
@@ -78,4 +78,5 @@ body{
   text-align: center;
   font-size: 50px;
   margin-top: 30px;
+  color: #3b1f2b;
 }
