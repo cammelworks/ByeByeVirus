@@ -3,7 +3,7 @@
 }
 
 body{
-  background-color: #c9ada1;
+  background-color: #EEF5DB;
 }
 
 .box{
@@ -16,7 +16,7 @@ body{
 	left: 50%;
 	transform: translate(-50%, -50%);
   font-size: 100px;
-  color: #3b1f2b;
+  color: #D64933;
 }
 
 #startButton{
@@ -35,7 +35,7 @@ body{
 	left: 50%;
 	transform: translate(-50%, -50%);
   font-size: 150px;
-  color: #3b1f2b;
+  color: #D64933;
 }
 
 #resultButtons{
@@ -57,17 +57,17 @@ body{
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: white;
-  background-color: #73d2de;
-  border: solid 2px #73d2de;
+  color: #EEF5DB;
+  background-color: #7D84B2;
+  border: solid 2px #7D84B2;
   border-radius: 3px;
   transition: .4s;
 }
 
 .flatButton:hover {
-  background: #c9ada1;
-  color: #73d2de;
-  border: solid 2px #73d2de;
+  background: #EEF5DB;
+  color: #7D84B2;
+  border: solid 2px #7D84B2;
 }
 
 .img-virus {
@@ -83,7 +83,7 @@ body{
 
 .game-time{
   font-size: 30px;
-  color: #3b1f2b;
+  color: #D64933;
 }
 
 .random{
