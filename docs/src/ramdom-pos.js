@@ -15,11 +15,11 @@ Vue.directive('random-pos', {
 
 //高さをランダムで指定する
 function randomTop(){
-    return Math.floor(Math.random() * Math.floor(window.innerHeight - 105));
+    return Math.floor(Math.random() * Math.floor(window.innerHeight * 0.7 - 105));
 }
 //横の位置をランダムで指定する
 function randomLeft(){
-    return Math.floor(Math.random() * Math.floor(window.innerWidth - 105));
+    return Math.floor(Math.random() * Math.floor(window.innerWidth * 0.8 - 105));
 }
 
 function randomMove(randomElm, top, left) {
@@ -46,15 +46,15 @@ function randomMove(randomElm, top, left) {
       if(randomTop <= 0) {
         randomTop = 0;
       }
-      if(randomTop >= window.innerHeight - 115) {
-        randomTop = window.innerHeight - 115;
+      if(randomTop >= window.innerHeight * 0.7 - 115) {
+        randomTop = window.innerHeight * 0.7 - 115;
       }
 
       if(randomLeft <= 0) {
         randomLeft = 0;
       }
-      if(randomLeft >= window.innerWidth - 105) {
-        randomLeft = window.innerWidth - 105;
+      if(randomLeft >= window.innerWidth * 0.8 - 105) {
+        randomLeft = window.innerWidth * 0.8 - 105;
       }
   
       randomElm.style.left = randomLeft + "px";

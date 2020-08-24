@@ -12,7 +12,7 @@ body{
 
 #titleText{
   position: absolute;
-	top: 30%;
+	top: 10%;
 	left: 50%;
 	transform: translate(-50%, -50%);
   font-size: 100px;
@@ -88,4 +88,13 @@ body{
 
 .random{
   transition: .1s;
+}
+
+#game{
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border: solid 2px #73d2de;
 }

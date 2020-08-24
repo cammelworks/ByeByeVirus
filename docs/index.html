@@ -7,16 +7,14 @@
 </head>
 <body>
   <!-- タイトル画面 -->
-  <div id="title" v-if="seen">
+  <div id="title">
     <div id="titleText">
       <span class="box">ByeByeVirus</span>
-      <img class="box" id="titleImg" src="figs/virus_corona.png">
     </div>
-    <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
   </div>
 
   <!-- ゲーム画面 -->
-  <div id="game" v-if="seen">
+  <div id="game">
     <div id="time">
       <p class="game-time">
         ハイスコア 
@@ -31,13 +29,15 @@
         {{ milliSeconds | zeroPad(3) }}
       </p>
     </div>
-    <div v-for="n in 100">
+    <div v-for="n in 100" v-if="seen">
       <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
+    </div>
+    <div id="start" v-if="isTitle">
+      <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">
       <p id="resultText">CLEAR!!</p>
       <div id="resultButtons">
-        <a href="#" class="flatButton" id="titleButton" v-on:click="toTitle">ホーム画面へ</a>
         <a href="#" class="flatButton" id="restartButton" v-on:click="restart">リスタート</a>
       </div>
     </div>
