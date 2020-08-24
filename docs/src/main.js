@@ -14,7 +14,7 @@ var game = new Vue({
   el: "#game",
   data: {
     seen: false,
-    remaining: 100,
+    // remaining: 100,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
     times: [],
@@ -33,14 +33,14 @@ var game = new Vue({
       var sound = new Audio("sounds/deleteVirusSE.mp3");
       sound.volume = 0.5;
       sound.play();
-      this.remaining--;
-      console.log(this.remaining);
-      if (this.remaining <= 0) {
-        sound = new Audio("sounds/clearSE.mp3");
-        sound.volume = 0.3;
-        sound.play();
-        showResult();
-      }
+      // this.remaining--;
+      // console.log(this.remaining);
+      // if (this.remaining <= 0) {
+      //   sound = new Audio("sounds/clearSE.mp3");
+      //   sound.volume = 0.3;
+      //   sound.play();
+      //   showResult();
+      // }
     },
     start: function(){
       this.isTitle = false;
@@ -66,6 +66,13 @@ var game = new Vue({
         vm.nowTime = Math.floor(performance.now());
         vm.diffTime = vm.nowTime - vm.startTime;
         vm.animateFrame = requestAnimationFrame(loop);
+        //30秒たったらゲーム終了
+        if(vm.diffTime >= 30000){
+          sound = new Audio("sounds/clearSE.mp3");
+          sound.volume = 0.3;
+          sound.play();
+          showResult();
+        }
       }());
       vm.isRunning = true;
     },
@@ -160,6 +167,7 @@ function showResult(){
   game.bgm.pause();
   game.bgm.currentTime = 0;
   game.stopTimer();
+  game.seen = false;
   game.isResult = true;
 }
 
