@@ -14,14 +14,14 @@ var game = new Vue({
   el: "#game",
   data: {
     seen: false,
-    // remaining: 100,
+    score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
     times: [],
     animateFrame: 0,
     nowTime: 0,
     diffTime: 0,
-    highScore: localStorage.diffTime,
+    highScore: localStorage.score,
     startTime: 0,
     isTitle: true,
     isRunning: false,
@@ -33,14 +33,7 @@ var game = new Vue({
       var sound = new Audio("sounds/deleteVirusSE.mp3");
       sound.volume = 0.5;
       sound.play();
-      // this.remaining--;
-      // console.log(this.remaining);
-      // if (this.remaining <= 0) {
-      //   sound = new Audio("sounds/clearSE.mp3");
-      //   sound.volume = 0.3;
-      //   sound.play();
-      //   showResult();
-      // }
+      this.score++;
     },
     start: function(){
       this.isTitle = false;
@@ -113,27 +106,6 @@ var game = new Vue({
     milliSeconds: function () {
       return Math.floor(this.diffTime % 1000);
     },
-    // 分数を計算 (60分になったら0分に戻る)
-    storageMinutes: function () {
-      if(!this.highScore){
-        return "99";
-      }
-      return Math.floor(this.highScore / 1000 / 60) % 60;
-    },
-    // 秒数を計算 (60秒になったら0秒に戻る)
-    storageSeconds: function () {
-      if(!this.highScore){
-        return "99";
-      }
-      return Math.floor(this.highScore / 1000) % 60;
-    },
-    // ミリ数を計算 (1000ミリ秒になったら0ミリ秒に戻る)
-    storageMilliSeconds: function () {
-      if(!this.highScore){
-        return "999";
-      }
-      return Math.floor(this.highScore % 1000);
-    },
   },
   filters: {
     // ゼロ埋めフィルタ 引数に桁数を入力する
@@ -151,9 +123,9 @@ function gameStart(){
   game.bgm.play();
   title.seen = false;
   game.isResult = false;
-  game.remaining = 100;
   game.seen = true;
   saveData();
+  game.score = 0;
   game.clearAll();
   game.startTimer();
 }
@@ -188,11 +160,8 @@ function sleep(waitSec, callbackFunc) {
 }
 
 function saveData(){
-  if(game.diffTime == 0){
-    return
-  }
-  if (localStorage.diffTime > game.diffTime || !localStorage.diffTime){
-    localStorage.diffTime = game.diffTime;
-    game.highScore = game.diffTime;
+  if (localStorage.score < game.score || !localStorage.score){
+    localStorage.score = game.score;
+    game.highScore = game.score;
   }
 }

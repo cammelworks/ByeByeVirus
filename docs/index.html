@@ -17,16 +17,18 @@
   <div id="game">
     <div id="time">
       <p class="game-time">
-        ハイスコア 
-        {{ storageMinutes | zeroPad }}:
-        {{ storageSeconds | zeroPad }}:
-        {{ storageMilliSeconds | zeroPad(3) }}
-      </p>
-      <p class="game-time">
         経過時間
         {{ minutes | zeroPad }}:
         {{ seconds | zeroPad }}:
         {{ milliSeconds | zeroPad(3) }}
+      </p>
+      <p class="game-time">
+        スコア
+        {{ score }}
+      </p>
+      <p class="game-time">
+        ハイスコア
+        {{ highScore }}
       </p>
     </div>
     <div v-for="n in 100" v-if="seen">
