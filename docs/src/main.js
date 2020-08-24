@@ -15,6 +15,8 @@ var game = new Vue({
   data: {
     seen: false,
     remaining: 100,
+    cursorImage: "figs/hakkekyu.png",
+    // virusImage に 変更したいです _kugi_
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
     times: [],

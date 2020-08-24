@@ -29,7 +29,9 @@
         {{ milliSeconds | zeroPad(3) }}
       </p>
     </div>
+    <cursor-image v-bind:src="cursorImage"></cursor-image>
     <div v-for="n in 100" v-if="seen">
+      <!-- image を virusImage に変更したいです。_kugi_ -->
       <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
     </div>
     <div id="start" v-if="isTitle">
@@ -54,7 +56,9 @@
   <!-- Initialize Firebase -->
   <script src="/__/firebase/init.js"></script>
   <script src="src/main.js"></script>
+  <script src="src/cursor-image.js"></script>
   <script src="src/virus-image.js"></script>
+  <script src="src/cursor-pos.js"></script>
   <script src="src/ramdom-pos.js"></script>
 </body>
 </html>
