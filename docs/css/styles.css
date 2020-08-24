@@ -75,6 +75,12 @@ body{
   height: 100px;
 }
 
+/* ここ変えてフィーバーとか出来そう */
+.img-cursor {
+  width: 100px;
+  height: 100px;
+}
+
 #time{
   margin-top: 30px;
   margin-right: 30px;
@@ -96,5 +102,5 @@ body{
   left: 10%;
   right: 10%;
   bottom: 10%;
-  border: solid 2px #73d2de;
+  border: solid 2px #7D84B2;
 }
