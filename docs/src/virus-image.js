@@ -20,9 +20,9 @@
       this.topMargin = randomTop();
       this.leftMargin = randomLeft();
     }
-    this.$el.style.top = this.topMargin + "px";
+    this.$el.style.topMargin = this.topMargin + "px";
     this.$el.style.left = this.leftMargin + "px";
-    randomMove(this.$el, this.top, this.leftMargin);
+    randomMove(this.$el, this.topMargin, this.leftMargin);
   },
   methods:{
     hovered: function(){
