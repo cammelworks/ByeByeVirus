@@ -23,6 +23,7 @@ var game = new Vue({
     diffTime: 0,
     highScore: localStorage.diffTime,
     startTime: 0,
+    isTitle: true,
     isRunning: false,
     isResult: false,
   },
@@ -41,9 +42,9 @@ var game = new Vue({
         showResult();
       }
     },
-    //titleに戻る
-    toTitle: function(){
-      showTitle();
+    start: function(){
+      this.isTitle = false;
+      gameStart();
     },
     //リスタート
     restart: function(){
