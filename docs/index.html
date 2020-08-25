@@ -15,28 +15,39 @@
 
   <!-- ゲーム画面 -->
   <div id="game">
-    <div id="time">
-      <p class="game-time">
-        ハイスコア 
-        {{ storageMinutes | zeroPad }}:
-        {{ storageSeconds | zeroPad }}:
-        {{ storageMilliSeconds | zeroPad(3) }}
-      </p>
-      <p class="game-time">
-        経過時間
-        {{ minutes | zeroPad }}:
-        {{ seconds | zeroPad }}:
-        {{ milliSeconds | zeroPad(3) }}
-      </p>
-    </div>
-    <div v-for="n in 100" v-if="seen">
-      <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
+    <div v-if="seen">
+      <div id="time">
+        <div class="game-time">
+          音量 <input id="volume" type="range" max="1" step="0.1" v-model="volume"> 
+          <p>
+            残り時間
+            {{ seconds | zeroPad }}:
+            {{ milliSeconds | zeroPad(3) }}
+          </p>
+          <p>
+            スコア
+            {{ score }}
+          </p>
+          <p>
+            ハイスコア
+            {{ highScore }}
+          </p>
+        </div>
+      </div>
+      <div v-for="n in 100" v-if="seen">
+        <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
+      </div>
     </div>
     <div id="start" v-if="isTitle">
+      <p class="descriptionText">15秒間マウスを動かして、ストレスを発散させよう!</p>
+      <p class="descriptionText">スタートを押すとBGMが流れます</p>
       <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">
-      <p id="resultText">CLEAR!!</p>
+      <div id="resultText">
+        <p>{{ score }}</p>
+        <p>消した</p>
+      </div>
       <div id="resultButtons">
         <a href="#" class="flatButton" id="restartButton" v-on:click="restart">リスタート</a>
       </div>
