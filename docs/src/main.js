@@ -60,7 +60,7 @@ var game = new Vue({
         vm.diffTime = vm.nowTime - vm.startTime;
         vm.animateFrame = requestAnimationFrame(loop);
         //30秒たったらゲーム終了
-        if(vm.diffTime >= 30000){
+        if(vm.diffTime >= 15000){
           sound = new Audio("sounds/clearSE.mp3");
           sound.volume = 0.3;
           sound.play();
@@ -94,17 +94,21 @@ var game = new Vue({
     }
   },
   computed: {
-    // 分数を計算 (60分になったら0分に戻る)
-    minutes: function () {
-      return Math.floor(this.diffTime / 1000 / 60) % 60;
-    },
     // 秒数を計算 (60秒になったら0秒に戻る)
     seconds: function () {
-      return Math.floor(this.diffTime / 1000) % 60;
+      if(this.seen){
+        return Math.floor(15 - this.diffTime / 1000) % 60;
+      } else{
+        return 0;
+      }
     },
     // ミリ数を計算 (1000ミリ秒になったら0ミリ秒に戻る)
     milliSeconds: function () {
-      return Math.floor(this.diffTime % 1000);
+      if(this.seen){
+        return Math.floor(999 - this.diffTime % 1000);
+      } else{
+        return 0;
+      }
     },
   },
   filters: {
