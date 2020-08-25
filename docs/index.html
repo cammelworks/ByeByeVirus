@@ -56,7 +56,10 @@
       <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">
-      <p id="resultText">CLEAR!!</p>
+      <div id="resultText">
+        <p>{{ score }}</p>
+        <p>消した</p>
+      </div>
       <div id="resultButtons">
         <a href="#" class="flatButton" id="restartButton" v-on:click="restart">リスタート</a>
       </div>

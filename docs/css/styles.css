@@ -31,10 +31,11 @@ body{
 
 #resultText{
   position: absolute;
+  text-align: center;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-  font-size: 150px;
+  font-size: 100px;
   color: #D64933;
 }
 
