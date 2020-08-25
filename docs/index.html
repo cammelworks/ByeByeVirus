@@ -15,21 +15,6 @@
 
   <!-- ゲーム画面 -->
   <div id="game">
-    <!-- <div id="time">
-      <p class="game-time">
-        残り時間
-        {{ seconds | zeroPad }}:
-        {{ milliSeconds | zeroPad(3) }}
-      </p>
-      <p class="game-time">
-        スコア
-        {{ score }}
-      </p>
-      <p class="game-time">
-        ハイスコア
-        {{ highScore }}
-      </p>
-    </div> -->
     <div v-if="seen">
       <div id="time">
         <p class="game-time">

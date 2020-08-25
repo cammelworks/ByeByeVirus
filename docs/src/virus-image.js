@@ -16,7 +16,7 @@
     this.$el.style.position = "absolute";
     this.topMargin = randomTop();
     this.leftMargin = randomLeft();
-    while(this.topMargin < 100 && this.leftMargin > window.innerWidth - 500){
+    while(this.topMargin < 200 && this.leftMargin > window.innerWidth * 0.8 - 400){
       this.topMargin = randomTop();
       this.leftMargin = randomLeft();
     }
@@ -84,6 +84,15 @@ function randomMove(randomElm, top, left) {
       }
       if(randomLeft >= window.innerWidth * 0.8 - 105) {
         randomLeft = window.innerWidth * 0.8 - 105;
+      }
+
+      //スコアと被らないように調整
+      if(this.topMargin < 200 && this.leftMargin > window.innerWidth * 0.8 - 400){
+        if(this.topMargin < 100){
+          this.topMargin = 100;
+        } else{
+          this.leftMargin = window.innerWidth * 0.8 - 400;
+        }
       }
   
       randomElm.style.left = randomLeft + "px";
