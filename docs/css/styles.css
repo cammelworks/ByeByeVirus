@@ -106,3 +106,8 @@ body{
   font-size: 30px;
   color: #7D84B2;
 }
+
+#volume{
+  width: 22%;
+  outline: none;
+}

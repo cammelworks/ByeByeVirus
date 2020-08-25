@@ -17,6 +17,7 @@
   <div id="game">
     <div v-if="seen">
       <div id="time">
+        <input id="volume" type="range" max="1" step="0.1" v-model="volume">
         <p class="game-time">
           残り時間
           {{ seconds | zeroPad }}:

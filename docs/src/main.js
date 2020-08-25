@@ -17,6 +17,7 @@ var game = new Vue({
     score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
+    volume: 0.3,
     times: [],
     animateFrame: 0,
     nowTime: 0,
@@ -123,7 +124,7 @@ var game = new Vue({
 
 function gameStart(){
   game.bgm.loop = true;
-  game.bgm.volume = 0.3;
+  game.bgm.volume = game.volume;
   game.bgm.play();
   title.seen = false;
   game.isResult = false;
