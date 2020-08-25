@@ -17,6 +17,7 @@ var game = new Vue({
     score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
+    clearSE: new Audio("sounds/clearSE.mp3"),
     volume: 0.5,
     times: [],
     animateFrame: 0,
@@ -62,9 +63,7 @@ var game = new Vue({
         vm.animateFrame = requestAnimationFrame(loop);
         //30秒たったらゲーム終了
         if(vm.diffTime >= 15000){
-          sound = new Audio("sounds/clearSE.mp3");
-          sound.volume = 0.3;
-          sound.play();
+          vm.clearSE.play();
           showResult();
         }
       }());
@@ -116,6 +115,7 @@ var game = new Vue({
     // BGMの音量を調整
     volume: function (val) {
       this.bgm.volume = val;
+      this.clearSE.volume = val;
     }
   },
   filters: {
@@ -132,6 +132,7 @@ function gameStart(){
   game.bgm.loop = true;
   game.bgm.volume = game.volume;
   game.bgm.play();
+  game.clearSE.volume = game.volume;
   title.seen = false;
   game.isResult = false;
   game.seen = true;
