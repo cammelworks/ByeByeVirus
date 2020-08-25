@@ -15,7 +15,7 @@
 
   <!-- ゲーム画面 -->
   <div id="game">
-    <div id="time">
+    <!-- <div id="time">
       <p class="game-time">
         残り時間
         {{ seconds | zeroPad }}:
@@ -29,11 +29,30 @@
         ハイスコア
         {{ highScore }}
       </p>
-    </div>
-    <div v-for="n in 100" v-if="seen">
-      <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
+    </div> -->
+    <div v-if="seen">
+      <div id="time">
+        <p class="game-time">
+          残り時間
+          {{ seconds | zeroPad }}:
+          {{ milliSeconds | zeroPad(3) }}
+        </p>
+        <p class="game-time">
+          スコア
+          {{ score }}
+        </p>
+        <p class="game-time">
+          ハイスコア
+          {{ highScore }}
+        </p>
+      </div>
+      <div v-for="n in 100" v-if="seen">
+        <virus-image v-bind:src="image" v-bind:id=n v-on:hoverd="decrementTotalCount"></virus-image>
+      </div>
     </div>
     <div id="start" v-if="isTitle">
+      <p class="descriptionText">15秒間マウスを動かして、ストレスを発散させよう!</p>
+      <p class="descriptionText">スタートを押すとBGMが流れます</p>
       <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">

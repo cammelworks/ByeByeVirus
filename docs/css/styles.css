@@ -96,5 +96,12 @@ body{
   left: 10%;
   right: 10%;
   bottom: 10%;
-  border: solid 2px #73d2de;
+  border: solid 2px #7D84B2;
+}
+
+.descriptionText{
+  margin-top: 100px;
+  text-align: center;
+  font-size: 30px;
+  color: #7D84B2;
 }
