@@ -14,7 +14,7 @@ var game = new Vue({
   el: "#game",
   data: {
     seen: false,
-    worldTotal: 10,
+    worldTotal: "???",
     score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
@@ -29,6 +29,11 @@ var game = new Vue({
     isTitle: true,
     isRunning: false,
     isResult: false,
+  }, 
+  // インスタンス生成前に
+  beforeCreate: function () {
+    // みんなの記録を取得
+    getDataFromFireStore()
   },
   methods:{
     // ウイルスの残り数を更新する
@@ -44,6 +49,8 @@ var game = new Vue({
     },
     //リスタート
     restart: function(){
+      // みんなの記録を取得
+      getDataFromFireStore();
       game.seen = false;
       sleep(1, gameStart);
     },
@@ -65,6 +72,7 @@ var game = new Vue({
         //30秒たったらゲーム終了
         if(vm.diffTime >= 15000){
           vm.clearSE.play();
+          saveDataToFireStore();
           showResult();
         }
       }());
@@ -141,10 +149,10 @@ function gameStart(){
   game.score = 0;
   game.clearAll();
   game.startTimer();
-  getDataFromFireStore();
 }
 
 function showTitle(){
+  // みんなの記録を取得
   title.seen = true;
   game.seen = false;
 }
@@ -180,9 +188,10 @@ function saveData(){
   }
 }
 
-var db = firebase.firestore();
+// FireStoreからデータを取得
 function getDataFromFireStore()
 {
+  var db = firebase.firestore();
   var docRef = db.collection("ByeByeVirus").doc("worldTotal");
   docRef.get().then(function(doc) {
     if (doc.exists) {
@@ -195,4 +204,16 @@ function getDataFromFireStore()
   }).catch(function(error) {
     console.log("Error getting document:", error);
   });
+}
+
+// FireStoreにデータを保存
+function  saveDataToFireStore() 
+{
+  var db = firebase.firestore();
+  var docRef = db.collection("ByeByeVirus").doc("worldTotal");
+  // game.worldTotal は取得済みの「みんなの記録」
+  var newWorldTotal = game.worldTotal + game.score;
+  docRef.set(
+    {sum: newWorldTotal}
+  );
 }
