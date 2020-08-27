@@ -14,6 +14,7 @@ var game = new Vue({
   el: "#game",
   data: {
     seen: false,
+    worldTotal: 10,
     score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
@@ -140,6 +141,7 @@ function gameStart(){
   game.score = 0;
   game.clearAll();
   game.startTimer();
+  getDataFromFireStore();
 }
 
 function showTitle(){
@@ -176,4 +178,21 @@ function saveData(){
     localStorage.score = game.score;
     game.highScore = game.score;
   }
+}
+
+var db = firebase.firestore();
+function getDataFromFireStore()
+{
+  var docRef = db.collection("ByeByeVirus").doc("worldTotal");
+  docRef.get().then(function(doc) {
+    if (doc.exists) {
+        // みんなの記録の合計を取得
+        console.log("Document data:", doc.data().sum);
+        game.worldTotal=  doc.data().sum;
+    } else {
+        console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
 }

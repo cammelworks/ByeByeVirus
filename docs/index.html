@@ -40,6 +40,7 @@
     <div id="start" v-if="isTitle">
       <p class="descriptionText">15秒間マウスを動かして、ストレスを発散させよう!</p>
       <p class="descriptionText">スタートを押すとBGMが流れます</p>
+      <p class="descriptionText">{{ worldTotal }}</p>
       <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">
@@ -60,6 +61,7 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="/__/firebase/7.19.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.19.0/firebase-firestore.js"></script>
 
   <!-- Initialize Firebase -->
   <script src="/__/firebase/init.js"></script>
