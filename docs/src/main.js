@@ -1,15 +1,3 @@
-var title = new Vue({
-  el: "#title",
-  data:{
-    seen: true
-  },
-  methods:{
-    start: function(){
-      gameStart();
-    }
-  }
-})
-
 var game = new Vue({
   el: "#game",
   data: {
@@ -51,6 +39,10 @@ var game = new Vue({
       sound.volume = this.volume;
       sound.play();
       this.score++;
+    },
+    //titleに戻る
+    toTitle: function(){
+      showTitle();
     },
     start: function(){
       this.isTitle = false;
@@ -162,8 +154,9 @@ function gameStart(){
 
 function showTitle(){
   // みんなの記録を取得
-  title.seen = true;
-  game.seen = false;
+  getDataFromFireStore()
+  game.isTitle = true;
+  game.isResult = false;
 }
 
 function showResult(){
