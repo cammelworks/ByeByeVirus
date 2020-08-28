@@ -6,7 +6,9 @@ var game = new Vue({
     score: 0,
     image: "figs/virus_corona.png",
     bgm: new Audio("sounds/BGM.mp3"),
+    gameClearBGM: new Audio("sounds/gameClearBGM.mp3"),
     clearSE: new Audio("sounds/clearSE.mp3"),
+    highScoreSE: new Audio("sounds/highScoreSE.mp3"),
     volume: 0.5,
     times: [],
     animateFrame: 0,
@@ -42,6 +44,7 @@ var game = new Vue({
     },
     //titleに戻る
     toTitle: function(){
+      this.gameClearBGM.pause();
       showTitle();
     },
     start: function(){
@@ -52,6 +55,7 @@ var game = new Vue({
     restart: function(){
       // みんなの記録を取得
       getDataFromFireStore();
+      this.gameClearBGM.pause();
       game.seen = false;
       sleep(1, gameStart);
     },
@@ -70,9 +74,8 @@ var game = new Vue({
         vm.nowTime = Math.floor(performance.now());
         vm.diffTime = vm.nowTime - vm.startTime;
         vm.animateFrame = requestAnimationFrame(loop);
-        //30秒たったらゲーム終了
+        //15秒たったらゲーム終了
         if(vm.diffTime >= 15000){
-          vm.clearSE.play();
           saveDataToFireStore();
           showResult();
         }
@@ -126,8 +129,10 @@ var game = new Vue({
     volume: function (val) {
       this.bgm.volume = val;
       this.clearSE.volume = val;
+      game.highScoreSE.volume = game.volume;
+      game.gameClearBGM.volume = game.volume;
       localStorage.volume = val;
-    }
+    },
   },
   filters: {
     // ゼロ埋めフィルタ 引数に桁数を入力する
@@ -144,6 +149,8 @@ function gameStart(){
   game.bgm.volume = game.volume;
   game.bgm.play();
   game.clearSE.volume = game.volume;
+  game.highScoreSE.volume = game.volume;
+  game.gameClearBGM.volume = game.volume;
   title.seen = false;
   game.isResult = false;
   game.seen = true;
@@ -165,7 +172,18 @@ function showResult(){
   game.stopTimer();
   game.seen = false;
   saveData();
+  if(game.isUpdated){
+    game.highScoreSE.play();
+  } else{
+    game.clearSE.play();
+  }
   game.isResult = true;
+  game.gameClearBGM.loop = true;
+  sleep(20, startGameClearBGM)
+}
+
+function startGameClearBGM(){
+  game.gameClearBGM.play();
 }
 
 function sleep(waitSec, callbackFunc) {
