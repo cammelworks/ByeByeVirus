@@ -98,10 +98,15 @@ body{
 }
 
 .descriptionText{
-  margin-top: 100px;
+  margin-top: 80px;
   text-align: center;
   font-size: 30px;
   color: #7D84B2;
+}
+
+.descriptionText .emphasis{
+  color: #D64933;
+  font-size: 70px;
 }
 
 #volume{
