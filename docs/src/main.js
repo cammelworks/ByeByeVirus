@@ -29,6 +29,7 @@ var game = new Vue({
     isTitle: true,
     isRunning: false,
     isResult: false,
+    isUpdated: false,
   }, 
   // インスタンス生成前に
   beforeCreate: function () {
@@ -154,7 +155,6 @@ function gameStart(){
   title.seen = false;
   game.isResult = false;
   game.seen = true;
-  saveData();
   game.score = 0;
   game.clearAll();
   game.startTimer();
@@ -171,6 +171,7 @@ function showResult(){
   game.bgm.currentTime = 0;
   game.stopTimer();
   game.seen = false;
+  saveData();
   game.isResult = true;
 }
 
@@ -194,6 +195,9 @@ function saveData(){
   if (localStorage.score < game.score || !localStorage.score){
     localStorage.score = game.score;
     game.highScore = game.score;
+    game.isUpdated = true;
+  } else {
+    game.isUpdated = false;
   }
 }
 
