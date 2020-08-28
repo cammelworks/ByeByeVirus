@@ -25,7 +25,6 @@
   methods:{
     hovered: function(){
       this.$emit('hoverd');
-      // this.$el.parentNode.removeChild(this.$el);
       //位置を動かす
       this.topMargin = randomTop();
       this.leftMargin = randomLeft();
@@ -33,9 +32,10 @@
       this.$el.style.top = this.topMargin + "px";
       this.$el.style.left = this.leftMargin + "px";
       clearInterval(this.timer)
+      //非表示にする
       this.$el.style.visibility = "hidden";
+      //1秒後に表示して動き出す
       sleep(10, this.randomMove)
-      // this.randomMove();
     },
     randomMove: function(){
       //初期値

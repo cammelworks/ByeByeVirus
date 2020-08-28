@@ -179,10 +179,12 @@ function showResult(){
   }
   game.isResult = true;
   game.gameClearBGM.loop = true;
+  //2秒後にリザルトのBGMを流す
   sleep(20, startGameClearBGM)
 }
 
 function startGameClearBGM(){
+  game.gameClearBGM.currentTime = 0;
   game.gameClearBGM.play();
 }
 
