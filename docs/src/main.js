@@ -29,11 +29,20 @@ var game = new Vue({
     isTitle: true,
     isRunning: false,
     isResult: false,
+    isUpdated: false,
   }, 
   // インスタンス生成前に
   beforeCreate: function () {
     // みんなの記録を取得
     getDataFromFireStore()
+  },
+  mounted: function(){
+    //localStorageから音量を取得
+    if(localStorage.volume){
+      this.volume = localStorage.volume;
+    } else {
+      this.volume = 0.5;
+    }
   },
   methods:{
     // ウイルスの残り数を更新する
@@ -125,6 +134,7 @@ var game = new Vue({
     volume: function (val) {
       this.bgm.volume = val;
       this.clearSE.volume = val;
+      localStorage.volume = val;
     }
   },
   filters: {
@@ -145,7 +155,6 @@ function gameStart(){
   title.seen = false;
   game.isResult = false;
   game.seen = true;
-  saveData();
   game.score = 0;
   game.clearAll();
   game.startTimer();
@@ -162,6 +171,7 @@ function showResult(){
   game.bgm.currentTime = 0;
   game.stopTimer();
   game.seen = false;
+  saveData();
   game.isResult = true;
 }
 
@@ -185,6 +195,9 @@ function saveData(){
   if (localStorage.score < game.score || !localStorage.score){
     localStorage.score = game.score;
     game.highScore = game.score;
+    game.isUpdated = true;
+  } else {
+    game.isUpdated = false;
   }
 }
 

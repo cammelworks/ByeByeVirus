@@ -33,13 +33,16 @@
       this.$el.style.top = this.topMargin + "px";
       this.$el.style.left = this.leftMargin + "px";
       clearInterval(this.timer)
-      this.randomMove();
+      this.$el.style.visibility = "hidden";
+      sleep(10, this.randomMove)
+      // this.randomMove();
     },
     randomMove: function(){
       //初期値
-    var randomTop = this.topMargin;
-    var randomLeft = this.leftMargin;
-    var randomElm = this.$el;
+      var randomTop = this.topMargin;
+      var randomLeft = this.leftMargin;
+      var randomElm = this.$el;
+      randomElm.style.visibility = "visible";
   
     this.timer= setInterval(function() {
       //位置をランダムに移動
@@ -85,4 +88,20 @@ function randomTop(){
 //横の位置をランダムで指定する
 function randomLeft(){
   return Math.floor(Math.random() * Math.floor(window.innerWidth * 0.8 - 105));
+}
+
+function sleep(waitSec, callbackFunc) {
+  // 経過時間（秒）
+  var spanedSec = 0;
+  // 1秒間隔で無名関数を実行
+  var id = setInterval(function () {
+      spanedSec++;
+      // 経過時間 >= 待機時間の場合、待機終了。
+      if (spanedSec >= waitSec) {
+          // タイマー停止
+          clearInterval(id);
+          // 完了時、コールバック関数を実行
+          if (callbackFunc) callbackFunc();
+      }
+  }, 100);
 }

@@ -9,7 +9,7 @@
   <!-- タイトル画面 -->
   <div id="title">
     <div id="titleText">
-      <span class="box">ByeByeVirus</span>
+      <span>ByeByeVirus</span>
     </div>
   </div>
 
@@ -39,12 +39,13 @@
     </div>
     <div id="start" v-if="isTitle">
       <p class="descriptionText">15秒間マウスを動かして、ストレスを発散させよう!<br>
-      スタートを押すとBGMが流れます</p>
+      ※スタートを押すとBGMが流れます</p>
       <p class="descriptionText">みんなが消したウイルスの数 : {{ worldTotal }}</p>
       <a href="#" class="flatButton" id="startButton" v-on:click="start">スタート</a>
     </div>
     <div id="result" v-if="isResult">
       <div id="resultText">
+        <p v-if="isUpdated">ハイスコア更新!!</p>
         <p>{{ score }}</p>
         <p>消した</p>
       </div>

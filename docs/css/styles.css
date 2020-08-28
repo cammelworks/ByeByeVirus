@@ -6,10 +6,6 @@ body{
   background-color: #EEF5DB;
 }
 
-.box{
-  vertical-align:middle;
-}
-
 #titleText{
   position: absolute;
 	top: 10%;
@@ -32,9 +28,10 @@ body{
 #resultText{
   position: absolute;
   text-align: center;
-	top: 50%;
+	top: 40%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
   font-size: 100px;
   color: #D64933;
 }
