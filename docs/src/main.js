@@ -35,6 +35,14 @@ var game = new Vue({
     // みんなの記録を取得
     getDataFromFireStore()
   },
+  mounted: function(){
+    //localStorageから音量を取得
+    if(localStorage.volume){
+      this.volume = localStorage.volume;
+    } else {
+      this.volume = 0.5;
+    }
+  },
   methods:{
     // ウイルスの残り数を更新する
     decrementTotalCount: function(){
@@ -125,6 +133,7 @@ var game = new Vue({
     volume: function (val) {
       this.bgm.volume = val;
       this.clearSE.volume = val;
+      localStorage.volume = val;
     }
   },
   filters: {
